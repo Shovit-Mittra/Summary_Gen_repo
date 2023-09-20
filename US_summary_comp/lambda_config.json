@@ -1,0 +1,18 @@
+{
+    "ENV": "Prod",
+    "secret_name": "mcd-alerts-email-secrets",
+    "region_name": "eu-west-1",
+    "email_port": 465,
+    "receiver_email": ["kapil.kumar3290@tigeranalytics.com"],
+    "cc_recipients": ["kapil.kumar3290@tigeranalytics.com"],
+    "ETL_Process": "Pmix_Summary_Validation_EMR_vs_Lisa",
+    "paths": {
+        "common": {
+        "s3_base_bucket": "mcd-refactor-us-prod"
+      },
+      "us": {
+        "Lisa_file_path": "s3://us-mcd-write-partner-newportal/gdw_summary_reports/",
+        "output_s3_path": "s3://us-prod-report-source-data/emr/Pmix/reports/comparision/"
+      }
+    }
+}
