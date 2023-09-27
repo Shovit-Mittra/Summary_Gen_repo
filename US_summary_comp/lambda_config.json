@@ -1,18 +1,29 @@
 {
-    "ENV": "Prod",
-    "secret_name": "mcd-alerts-email-secrets",
-    "region_name": "eu-west-1",
-    "email_port": 465,
-    "receiver_email": ["kapil.kumar3290@tigeranalytics.com"],
-    "cc_recipients": ["kapil.kumar3290@tigeranalytics.com"],
-    "ETL_Process": "Pmix_Summary_Validation_EMR_vs_Lisa",
-    "paths": {
-        "common": {
-        "s3_base_bucket": "mcd-refactor-us-prod"
-      },
-      "us": {
-        "Lisa_file_path": "s3://us-mcd-write-partner-newportal/gdw_summary_reports/",
-        "output_s3_path": "s3://us-prod-report-source-data/emr/Pmix/reports/comparision/"
-      }
+  "ENV": "Prod",
+  "secret_name": "mcd-alerts-email-secrets",
+  "region_name": "eu-west-1",
+  "email_port": 465,
+  "receiver_email": ["kapil.kumar3290@tigeranalytics.com"],
+  "cc_recipients": ["kapil.kumar3290@tigeranalytics.com"],
+  "ETL_Process": "Pmix_Summary_Validation_Portal_vs_GPT",
+  "paths": {
+    "common": {
+      "s3_base_bucket": "mcd-refactor-us-prod"
+    },
+    "us": {
+      "GPT_file_path": "s3://us-mcd-write-partner-newportal/gdw_summary_reports/",
+      "output_s3_path": "s3://us-prod-report-source-data/emr/Pmix/reports/comparision/"
     }
+  },
+  "constants" : {
+    "portal_excel_sheet_names": {
+      "portal_overall_summary": "overall_summary",
+      "portal_summary_per_store": "summary_per_store"
+    },
+    "path_prefixes": {
+      "portal_path_prefix": "Daily_Dlry_Pmix_",
+      "GPT_overall_summary_path_prefix": "Daily_Pmix_Summary_",
+      "GPT_summary_per_store_path_prefix": "Daily_Pmix_TotXStore_"
+    }
+  }
 }

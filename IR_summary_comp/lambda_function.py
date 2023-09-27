@@ -42,28 +42,35 @@ def lambda_handler(event, context):
         region_name = cfg['region_name']
         email_port = cfg['email_port']
         ENV = cfg["ENV"]
-        emr_report_path = "s3://" + input_bucketName + "/" + input_fileName
-        lisa_report_path = cfg['paths'][market]['Lisa_file_path']
+        portal_report_path = "s3://" + input_bucketName + "/" + input_fileName
+        GPT_report_path = cfg['paths'][market]['GPT_file_path']
         summary_report_path = cfg['paths'][market]['output_s3_path']
         cc_recipients = cfg['cc_recipients']
+        portal_excel_sheet_names = cfg['constants']['portal_excel_sheet_names']
+        path_prefixes = cfg['constants']['path_prefixes']
+
         print(f"receiver_email: {receiver_email}")
         print(f"ENV : {ENV}")
-        print(f"emr_report_path: {emr_report_path}")
-        print(f"lisa_report_path: {lisa_report_path}")
+        print(f"portal_report_path: {portal_report_path}")
+        print(f"GPT_report_path: {GPT_report_path}")
         print(f"summary_report_path: {summary_report_path}")
         print(f"cc_recipients: {cc_recipients}")
+        print(f"excel_sheet_names: {portal_excel_sheet_names}")
+        print(f"path_prefixes: {path_prefixes}")
         
         generate_validation_report(
             env = ENV,
             market = market,
-            emr_report_path = emr_report_path, 
-            engine_report_path = lisa_report_path, 
+            portal_report_path = portal_report_path, 
+            GPT_report_path = GPT_report_path, 
             summary_report_path = summary_report_path,
+            portal_excel_sheet_names = portal_excel_sheet_names,  
+            path_prefixes = path_prefixes, 
             secret_name = secret_name,
             region_name = region_name,
             email_port = email_port,
             receiver_email = receiver_email,
-            cc_recipients = cc_recipients
+            cc_recipients = cc_recipients,
         )
         
         return {

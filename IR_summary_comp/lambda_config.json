@@ -1,30 +1,41 @@
 {
-    "ENV": "Prod",
-    "secret_name": "mcd-alerts-email-secrets",
-    "region_name": "eu-west-1",
-    "email_port": 465,
-    "receiver_email": ["kapil.kumar3290@tigeranalytics.com"],
-    "cc_recipients": ["mani.kamaraj@tigeranalytics.com", "abhineet.gunjan@tigeranalytics.com", "shikha.sevlani@tigeranalytics.com", "kabilan.kiruba@tigeranalytics.com", "kishore.tadisett@tigeranalytics.com"],
-    "ETL_Process": "Pmix_Summary_Validation_EMR_vs_Lisa",
-    "paths": {
-        "common": {
-        "s3_base_bucket": "mcd-refactor-ir-prod"
-      },
-      "italy": {
-        "Lisa_file_path": "s3://prod-it-write-partner-portal/gdw_summary_reports/",
-        "output_s3_path": "s3://it-prod-report-source/emr/Pmix/reports/comparision/"
-      },
-      "spain": {
-        "Lisa_file_path": "s3://es-mcd-write-partner-portal/gdw_summary_reports/",
-        "output_s3_path": "s3://es-prod-report-source-data/emr/Pmix/reports/comparision/"
-      },
-      "france": {
-        "Lisa_file_path": "s3://fr-mcd-write-partner-newportal/gdw_summary_reports/",
-        "output_s3_path": "s3://fr-prod-report-source-data/emr/Pmix/reports/comparision/"
-      },
-      "germany": {
-        "Lisa_file_path": "s3://de-mcd-write-partner-newportal/gdw_summary_reports/",
-        "output_s3_path": "s3://de-prod-report-source-data/emr/Pmix/reports/comparision/"
-      }
+  "ENV": "Prod",
+  "secret_name": "mcd-alerts-email-secrets",
+  "region_name": "eu-west-1",
+  "email_port": 465,
+  "receiver_email": ["kapil.kumar3290@tigeranalytics.com"],
+  "cc_recipients": ["mani.kamaraj@tigeranalytics.com", "abhineet.gunjan@tigeranalytics.com", "shikha.sevlani@tigeranalytics.com", "kabilan.kiruba@tigeranalytics.com", "kishore.tadisett@tigeranalytics.com"],
+  "ETL_Process": "Pmix_Summary_Validation_Portal_vs_GPT",
+  "paths": {
+    "common": {
+      "s3_base_bucket": "mcd-refactor-ir-prod"
+    },
+    "italy": {
+      "GPT_file_path": "s3://prod-it-write-partner-portal/gdw_summary_reports/",
+      "output_s3_path": "s3://it-prod-report-source/emr/Pmix/reports/comparision/"
+    },
+    "spain": {
+      "GPT_file_path": "s3://es-mcd-write-partner-portal/gdw_summary_reports/",
+      "output_s3_path": "s3://es-prod-report-source-data/emr/Pmix/reports/comparision/"
+    },
+    "france": {
+      "GPT_file_path": "s3://fr-mcd-write-partner-newportal/gdw_summary_reports/",
+      "output_s3_path": "s3://fr-prod-report-source-data/emr/Pmix/reports/comparision/"
+    },
+    "germany": {
+      "GPT_file_path": "s3://de-mcd-write-partner-newportal/gdw_summary_reports/",
+      "output_s3_path": "s3://de-prod-report-source-data/emr/Pmix/reports/comparision/"
     }
+  },
+  "constants" : {
+    "portal_excel_sheet_names": {
+      "portal_overall_summary": "overall_summary",
+      "portal_summary_per_store": "summary_per_store"
+    },
+    "path_prefixes": {
+      "portal_path_prefix": "Daily_Pmix_",
+      "GPT_overall_summary_path_prefix": "Daily_Pmix_Summary_",
+      "GPT_summary_per_store_path_prefix": "Daily_Pmix_TotXStore_"
+    }
+  }
 }
